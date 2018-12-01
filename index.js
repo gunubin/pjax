@@ -157,8 +157,10 @@ Pjax.prototype = {
 
     trigger(document, "pjax:send", options)
 
-    // Do the request
-    this.request = this.doRequest(href, options, this.handleResponse.bind(this))
+    setTimeout(function() {
+      // Do the request
+      this.request = this.doRequest(href, options, this.handleResponse.bind(this))
+    }.bind(this), options.delay)
   },
 
   afterAllSwitches: function() {
